@@ -1,0 +1,36 @@
+# dsh-auto-mode bundle patch
+#
+# This file is the `dsh.bundle.patch` layer of the published npm package: when
+# the plugin is installed through the official CLI —
+#
+#   dsh plugin --profile web add dsh-auto-mode@<version>
+#
+# — the command reconciles `dsh.profile.bundles` against installed packages
+# and, seeing this declaration, appends `dsh-auto-mode` to the bundle stack.
+#
+# The second patch adds `auto-mode` to the permission-preset table at
+# construction time, so both the composer picker and the settings page see it.
+# Its `approval` value MUST stay the core-valid policy `ask`: this plugin turns
+# that preset into auto behaviour in the `approval/request` answerer.
+- insert:
+    - id: auto-mode
+      name: 'dsh-auto-mode'
+
+- id: permission
+  name: '@deepseek-ai/dsh-permission-presets'
+  config:
+    presets:
+      read-only:
+        sandbox: read-only
+        approval: ask
+      workspace-write:
+        sandbox: workspace-write
+        approval: ask
+      danger-full-access:
+        sandbox: danger-full-access
+        approval: never
+      auto-mode:
+        sandbox: workspace-write
+        approval: ask
+        name: 'Auto mode'
+        description: 'In auto mode, an LLM reviewer decides each permission-gated tool call: clearly safe calls proceed, clearly harmful calls are blocked, and uncertain calls go to you for confirmation.'

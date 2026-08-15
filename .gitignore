@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Local npm cache kept inside the project
+.npm-cache/
+
+# Build output (regenerate with: npm run build)
+lib/
+
+# Logs
+*.log
+
+# OS noise
+.DS_Store
+Thumbs.db
