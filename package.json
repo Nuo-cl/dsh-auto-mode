@@ -76,5 +76,44 @@
     "approval",
     "permissions",
     "plugin"
-  ]
+  ],
+  "dshWorkshop": {
+    "schema": "omdsh-workshop-package/v1",
+    "type": "plugin",
+    "integration": {
+      "protocol": "harness-profile",
+      "artifact": "cordis.patch.yml"
+    },
+    "install": {
+      "mode": "transactional",
+      "adapter": "profile-bundle",
+      "failurePolicy": "generation-rollback",
+      "touchesCurrentBeforeActivation": false
+    },
+    "lifecycle": {
+      "activation": "restart-profile",
+      "dispose": "unknown"
+    },
+    "permissions": [
+      "network:outbound",
+      "ui:extend"
+    ],
+    "compatibility": {
+      "dshVersions": [
+        "0.1.0-rc.6"
+      ]
+    },
+    "capability": {
+      "id": "auto-status-report",
+      "kind": "command",
+      "invocation": "Run /auto-status in a DSH session after selecting the Auto mode permission preset.",
+      "expected": "The command reports auto-mode=true, permissionPreset=auto-mode, approvalPolicy=ask, and the permissionPresets list contains auto-mode."
+    },
+    "evidence": {
+      "install": "README.md",
+      "failureIsolation": "docs/e2e-checklist.md",
+      "hotReload": null,
+      "remove": null
+    }
+  }
 }
