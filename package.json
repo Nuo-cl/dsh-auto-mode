@@ -1,6 +1,6 @@
 {
   "name": "dsh-auto-mode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DSH plugin: auto mode that routes permission-gated tool calls through an LLM review before approving, blocking, or asking for confirmation.",
   "type": "module",
   "main": "lib/index.js",
@@ -69,6 +69,13 @@
     "@deepseek-ai/schemastery": "^3.18.1"
   },
   "author": "Nuo-cl",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nuo-cl/dsh-auto-mode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nuo-cl/dsh-auto-mode/issues"
+  },
   "keywords": [
     "dsh",
     "deepseek-harness",
